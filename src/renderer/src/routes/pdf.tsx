@@ -13,7 +13,9 @@ function RouteComponent(): JSX.Element {
   return (
     <div>
       <MarkPdf onPdfGenerated={(bytesArray: Uint8Array[]) => setPdfBytes(bytesArray)} />
-      <PdfViewer pdfBytes={pdfBytes} />
+      <div className="h-screen">
+        <PdfViewer pdfBytes={pdfBytes} />
+      </div>
     </div>
   )
 }

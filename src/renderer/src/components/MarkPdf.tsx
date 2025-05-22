@@ -19,7 +19,6 @@ function MarkPdf({
   const loadCsv = async (): Promise<void> => {
     const result: OrderData[] | null = await window.electronAPI.openCsvDialog()
     if (result) {
-      console.log(result)
       setCsvList((prevState) => [...prevState, ...result])
     }
   }
@@ -45,7 +44,7 @@ function MarkPdf({
         // Get the width and height of the first page
         const { width, height } = firstPage.getSize()
         // Draw a string of text diagonally across the first page
-        firstPage.drawText(`${pdf.order}\n${pdf.articleFrematt}\n${pdf.quantity} stuk(s)`, {
+        firstPage.drawText(`OR ${pdf.order}\n${pdf.articleFrematt}\n${pdf.quantity} stuk(s)`, {
           x: width / 2 - width / 2 + 60,
           y: height / 2 + height / 2 - 60,
           size: 20,
@@ -59,6 +58,8 @@ function MarkPdf({
       }
     }
     onPdfGenerated(allPdfBytes)
+    setPdfList([])
+    setCsvList([])
   }
 
   return (

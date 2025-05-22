@@ -39,7 +39,7 @@ function PdfViewer({ pdfBytes }: { pdfBytes: Uint8Array[] | undefined }): React.
     <iframe
       src={pdfUrl}
       width="100%"
-      height="600"
+      height="100%"
       title="Merged PDF Viewer"
       style={{ border: 'none' }}
     />
