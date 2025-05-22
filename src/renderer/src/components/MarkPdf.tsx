@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { PDFDocument, StandardFonts, rgb, degrees } from 'pdf-lib'
+import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 
 function MarkPdf({
   onPdfGenerated
