@@ -7,7 +7,7 @@ function MarkPdf({
   onPdfGenerated: (bytesArray: Uint8Array[]) => void
 }): React.JSX.Element {
   const [pdfList, setPdfList] = useState<Array<PdfFile>>([])
-  const [csvList, setCsvList] = useState<Array<CsvFile>>([])
+  const [csvList, setCsvList] = useState<Array<OrderData>>([])
 
   const loadPdf = async (): Promise<void> => {
     const result: PdfFile[] | null = await window.electronAPI.openPdfDialog()
@@ -17,8 +17,9 @@ function MarkPdf({
   }
 
   const loadCsv = async (): Promise<void> => {
-    const result: CsvFile[] | null = await window.electronAPI.openCsvDialog()
+    const result: OrderData[] | null = await window.electronAPI.openCsvDialog()
     if (result) {
+      console.log(result)
       setCsvList((prevState) => [...prevState, ...result])
     }
   }
@@ -43,11 +44,10 @@ function MarkPdf({
 
         // Get the width and height of the first page
         const { width, height } = firstPage.getSize()
-
         // Draw a string of text diagonally across the first page
         firstPage.drawText(`${pdf.order}\n${pdf.articleFrematt}\n${pdf.quantity} stuk(s)`, {
-          x: width / 10,
-          y: height / 2 + 350,
+          x: width / 2 - width / 2 + 60,
+          y: height / 2 + height / 2 - 60,
           size: 20,
           font: helveticaFont,
           color: rgb(0.1, 0.1, 0.95)

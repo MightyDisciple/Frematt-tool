@@ -7,18 +7,18 @@ declare global {
     articleCustomer: string
     filePath: string
   }
-  type CsvFile = {
+  type OrderData = {
     articleFrematt: string
     articleCustomer: string
     order: string
     quantity: string
   }
-  type MergedFile = Partial<PdfFile> & Partial<CsvFile>
+  type MergedFile = Partial<PdfFile> & Partial<OrderData>
 
   interface Window {
     electronAPI: {
       openPdfDialog: () => Promise<PdfFile[] | null>
-      openCsvDialog: () => Promise<CsvFile[] | null>
+      openCsvDialog: () => Promise<OrderData[] | null>
     }
   }
 }
