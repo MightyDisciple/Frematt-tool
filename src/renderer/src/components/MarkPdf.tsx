@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
+import { Button } from '@renderer/components/ui/button'
 
 function MarkPdf({
   onPdfGenerated
@@ -64,9 +65,27 @@ function MarkPdf({
 
   return (
     <>
-      <button onClick={loadPdf}>Load Pdf</button>
-      <button onClick={loadCsv}>Load Csv</button>
-      <button onClick={modifyPdf}>Submit</button>
+      <div className="w-screen h-screen flex flex-col items-center justify-center">
+        <div>
+          <Button className="cursor-pointer m-3" onClick={loadPdf}>
+            Load Pdf
+          </Button>
+          <label>{pdfList.length <= 0 ? 'No files found.' : 'Files uploaded'}</label>
+        </div>
+        <div>
+          <Button className="cursor-pointer m-3" onClick={loadCsv}>
+            Load XSLS
+          </Button>
+          <label>{csvList.length <= 0 ? 'No file found.' : 'File uploaded'}</label>
+        </div>
+        <div>
+          {csvList.length > 0 && pdfList.length > 0 ? (
+            <Button className="cursor-pointer m-3" onClick={modifyPdf}>
+              Submit
+            </Button>
+          ) : null}
+        </div>
+      </div>
     </>
   )
 }
