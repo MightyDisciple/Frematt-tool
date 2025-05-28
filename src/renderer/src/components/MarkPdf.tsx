@@ -13,6 +13,7 @@ function MarkPdf({
   const loadPdf = async (): Promise<void> => {
     const result: PdfFile[] | null = await window.electronAPI.openPdfDialog()
     if (result) {
+      console.log(result)
       setPdfList((prevState) => [...prevState, ...result])
     }
   }
@@ -20,6 +21,7 @@ function MarkPdf({
   const loadCsv = async (): Promise<void> => {
     const result: OrderData[] | null = await window.electronAPI.openCsvDialog()
     if (result) {
+      console.log(result)
       setCsvList((prevState) => [...prevState, ...result])
     }
   }
@@ -48,7 +50,7 @@ function MarkPdf({
         firstPage.drawText(`OR ${pdf.order}\n${pdf.articleFrematt}\n${pdf.quantity} stuk(s)`, {
           x: width / 2 - width / 2 + 60,
           y: height / 2 + height / 2 - 60,
-          size: 20,
+          size: 15,
           font: helveticaFont,
           color: rgb(0.1, 0.1, 0.95)
         })
@@ -65,7 +67,7 @@ function MarkPdf({
 
   return (
     <>
-      <div className="w-screen h-screen flex flex-col items-center justify-center">
+      <div className="w-screen h-auto flex flex-col items-center justify-center">
         <div>
           <Button className="cursor-pointer m-3" onClick={loadPdf}>
             Load Pdf

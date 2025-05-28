@@ -16,7 +16,15 @@ export const Route = createRootRoute({
         >
           Home
         </Link>
-        <Link to="/pdf" className="">
+        <Link
+          to="/pdf"
+          className="text-white no-underline"
+          activeProps={{
+            style: {
+              borderBottom: '2px solid red'
+            }
+          }}
+        >
           Pdf
         </Link>
       </div>

@@ -8,7 +8,7 @@ export const Route = createFileRoute('/')({
 
 function RouteComponent(): JSX.Element {
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
+    <div className="w-screen flex items-center justify-center">
       <img src={logo} alt="logo" className="w-auto h-52" />
     </div>
   )

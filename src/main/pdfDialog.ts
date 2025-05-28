@@ -12,7 +12,10 @@ function pdfDialog(): void {
     if (result.canceled) return []
     return result.filePaths.map((filePath) => ({
       filePath: path.basename(filePath),
-      articleCustomer: path.basename(filePath).split(' ')[0],
+      articleCustomer: path
+        .basename(filePath)
+        .slice(0, path.basename(filePath).lastIndexOf('.'))
+        .split(' ')[0],
       content: fs.readFileSync(filePath)
     }))
   })
