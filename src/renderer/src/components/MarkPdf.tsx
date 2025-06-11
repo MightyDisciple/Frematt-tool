@@ -51,6 +51,7 @@ function MarkPdf({
           x: width / 2 - width / 2 + 60,
           y: height / 2 + height / 2 - 60,
           size: 15,
+          lineHeight: 15,
           font: helveticaFont,
           color: rgb(0.1, 0.1, 0.95)
         })
